@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { Home } from "lucide-react";
+import { ArrowLeft, FileBarChart } from "lucide-react";
 import DataInputForm from "@/components/DataInputForm";
 import ChartDisplay from "@/components/ChartDisplay";
 import InsightsDisplay from "@/components/InsightsDisplay";
@@ -71,19 +71,32 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <Container className="max-w-5xl">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">
-            ChartOpia Analytica
-          </h1>
-          <Link to="/">
-            <Button variant="outline" size="sm">
-              <Home className="h-4 w-4 mr-2" />
-              Back to Home
-            </Button>
-          </Link>
-        </div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header with logo and navigation */}
+      <div className="bg-black text-white py-4">
+        <Container className="max-w-6xl">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center space-x-2">
+              <FileBarChart className="h-6 w-6 text-blue-500" />
+              <span className="text-xl font-bold">ChartOpia</span>
+            </div>
+            <Link to="/">
+              <Button variant="outline" size="sm" className="border-white text-white hover:bg-white/10">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Home
+              </Button>
+            </Link>
+          </div>
+        </Container>
+      </div>
+
+      <Container className="max-w-6xl py-8">
+        <h1 className="text-3xl font-bold mb-2">
+          Data Visualization Dashboard
+        </h1>
+        <p className="text-gray-600 mb-8">
+          Transform your data into beautiful visualizations and discover insights
+        </p>
         
         <div className="grid grid-cols-1 gap-8">
           <DataInputForm 
