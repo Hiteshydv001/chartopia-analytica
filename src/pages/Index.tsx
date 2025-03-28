@@ -1,12 +1,93 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useState } from "react";
+import { Container } from "@/components/ui/container";
+import DataInputForm from "@/components/DataInputForm";
+import ChartDisplay from "@/components/ChartDisplay";
+import InsightsDisplay from "@/components/InsightsDisplay";
+import ErrorDisplay from "@/components/ErrorDisplay";
+import { ChartData } from "@/types/ChartData";
+import { generateChart, analyzeTrends } from "@/services/api";
+import { toast } from "@/components/ui/use-toast";
 
 const Index = () => {
+  const [chartData, setChartData] = useState<ChartData | null>(null);
+  const [insights, setInsights] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleGenerateChart = async (formData: FormData) => {
+    setError(null);
+    setInsights(null);
+    setIsLoading(true);
+    
+    try {
+      const data = await generateChart(formData);
+      setChartData(data);
+      toast({
+        title: "Chart generated successfully",
+        description: `Created a ${data.chart_type} chart using your data.`,
+      });
+    } catch (err) {
+      console.error("Error generating chart:", err);
+      setError(err instanceof Error ? err.message : "An unknown error occurred");
+      setChartData(null);
+      toast({
+        variant: "destructive",
+        title: "Failed to generate chart",
+        description: err instanceof Error ? err.message : "An unknown error occurred",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleAnalyzeTrends = async (formData: FormData) => {
+    setError(null);
+    setChartData(null);
+    setIsLoading(true);
+    
+    try {
+      const data = await analyzeTrends(formData);
+      setInsights(data.insights);
+      toast({
+        title: "Trend analysis complete",
+        description: "AI has analyzed your data and generated insights.",
+      });
+    } catch (err) {
+      console.error("Error analyzing trends:", err);
+      setError(err instanceof Error ? err.message : "An unknown error occurred");
+      setInsights(null);
+      toast({
+        variant: "destructive",
+        title: "Failed to analyze trends",
+        description: err instanceof Error ? err.message : "An unknown error occurred",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <Container className="max-w-5xl">
+        <h1 className="text-3xl font-bold text-center mb-8">
+          ChartOpia Analytica
+        </h1>
+        
+        <div className="grid grid-cols-1 gap-8">
+          <DataInputForm 
+            onGenerateChart={handleGenerateChart}
+            onAnalyzeTrends={handleAnalyzeTrends}
+            isLoading={isLoading}
+          />
+          
+          <ErrorDisplay error={error} />
+          
+          {chartData && <ChartDisplay chartData={chartData} />}
+          
+          {insights && <InsightsDisplay insights={insights} />}
+        </div>
+      </Container>
     </div>
   );
 };
