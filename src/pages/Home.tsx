@@ -7,8 +7,14 @@ import {
   LineChart, 
   PieChart, 
   Code, 
-  FileBarChart
+  FileBarChart,
+  ChevronRight,
+  Settings,
+  Smartphone,
+  FileCode,
+  ArrowRight
 } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Home = () => {
   return (
@@ -23,7 +29,8 @@ const Home = () => {
         <div className="hidden md:flex items-center space-x-8">
           <a href="#features" className="hover:text-blue-400 transition-colors">Features</a>
           <a href="#how-it-works" className="hover:text-blue-400 transition-colors">How It Works</a>
-          <a href="#testimonials" className="hover:text-blue-400 transition-colors">Use Cases</a>
+          <a href="#testimonials" className="hover:text-blue-400 transition-colors">Testimonials</a>
+          <a href="#services" className="hover:text-blue-400 transition-colors">Services</a>
         </div>
         
         <Link to="/dashboard">
@@ -137,6 +144,171 @@ const Home = () => {
               <p className="text-gray-600">
                 Our AI will interpret the visualizations, providing text explanations of what the data means for your business, paying close attention to every detail.
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Testimonials Section */}
+      <div id="testimonials" className="py-24 px-8 md:px-16 bg-gray-50 text-black">
+        <div className="max-w-screen-xl mx-auto">
+          <div className="mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4">What clients say</h2>
+            <p className="text-xl text-gray-600">Team of data visualization experts creating value-added insights that act as a business catalyst</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Testimonial 1 */}
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <h3 className="text-xl font-bold mb-3">Pleasure working with ChartOpia on DataStack launch!</h3>
+              
+              <p className="text-gray-600 mb-8">
+                Was a pleasure working with ChartOpia on launching DataStack. They understood the vision and worked efficiently, with great communications, to execute it. Looking forward to working with them again!
+              </p>
+              
+              <div className="flex items-center">
+                <Avatar className="h-12 w-12 mr-4">
+                  <AvatarImage src="https://randomuser.me/api/portraits/men/41.jpg" />
+                  <AvatarFallback>RA</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="font-bold">Robert Anderson</p>
+                  <p className="text-sm text-gray-500">CEO, DataStack Solutions</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial 2 */}
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <h3 className="text-xl font-bold mb-3">ChartOpia's human-centered design exceeded expectations.</h3>
+              
+              <p className="text-gray-600 mb-8">
+                ChartOpia's human-centered design approach made our collaboration smooth and effective. They delivered as promised, were receptive to feedback, and the redesign met our expectations. Highly recommend them for any data visualization project.
+              </p>
+              
+              <div className="flex items-center">
+                <Avatar className="h-12 w-12 mr-4">
+                  <AvatarImage src="https://randomuser.me/api/portraits/women/41.jpg" />
+                  <AvatarFallback>JD</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="font-bold">Jennifer Davis</p>
+                  <p className="text-sm text-gray-500">Investments at TechGrowth</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial 3 */}
+            <div className="bg-green-100 p-8 rounded-xl shadow-sm">
+              <h3 className="text-xl font-bold mb-3">ChartOpia understood our needs, improved our conversions.</h3>
+              
+              <p className="text-gray-600 mb-8">
+                ChartOpia took the time to understand my industry. They knew what our visitors wanted, and they did an exceptional job to meet those needs. We've seen great improvements in impression and conversion after the redesign. I vouch for them!
+              </p>
+              
+              <div className="flex items-center">
+                <Avatar className="h-12 w-12 mr-4">
+                  <AvatarImage src="https://randomuser.me/api/portraits/men/32.jpg" />
+                  <AvatarFallback>MN</AvatarFallback>
+                </Avatar>
+                <div>
+                  <p className="font-bold">Michael Nguyen</p>
+                  <p className="text-sm text-gray-500">CEO at InsightXpo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Services Section */}
+      <div id="services" className="py-24 px-8 md:px-16 bg-gray-100 text-black">
+        <div className="max-w-screen-xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 md:mb-0">ChartOpia's Big Services</h2>
+            <p className="text-xl text-gray-600 md:max-w-md">We're not a jack of all trades; just masters of 4 specific services.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Service 1 */}
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="h-48 mb-6 flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden">
+                <img 
+                  src="/lovable-uploads/be11e2f3-e18a-4c41-a817-18fe32b0820e.png" 
+                  alt="Data to Visualization Service" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-2xl font-bold mb-3 text-center">Data To Visualization</h3>
+              <p className="text-gray-600 text-center mb-4">
+                Experience data transformations that bring clarity and insights. Our visualizations blend stunning visuals, optimized for understanding and seamless functionality.
+              </p>
+              <div className="flex justify-center">
+                <Link to="/dashboard">
+                  <Button variant="outline" className="rounded-full border-black text-black hover:bg-black hover:text-white">
+                    Try Now <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            
+            {/* Service 2 */}
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="h-48 mb-6 flex items-center justify-center bg-gray-50 rounded-lg overflow-hidden">
+                <img 
+                  src="/lovable-uploads/e1dd8c88-18da-4bc0-aba0-1a3f6e7987f8.png" 
+                  alt="Design and Development Service" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="text-2xl font-bold mb-3 text-center">Advanced Analytics & Design</h3>
+              <p className="text-gray-600 text-center mb-4">
+                Our analysts know which visual artistry will hook your audience and grab their attention, aligning with your brand's data storytelling needs.
+              </p>
+              <div className="flex justify-center">
+                <Link to="/dashboard">
+                  <Button variant="outline" className="rounded-full border-black text-black hover:bg-black hover:text-white">
+                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            
+            {/* Service 3 */}
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="h-48 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
+                <FileCode className="h-24 w-24 text-blue-500" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3 text-center">Custom Data Solutions</h3>
+              <p className="text-gray-600 text-center mb-4">
+                We transform complex data sets into interactive, custom solutions that provide real-time insights and decision-making capabilities for your business.
+              </p>
+              <div className="flex justify-center">
+                <Link to="/dashboard">
+                  <Button variant="outline" className="rounded-full border-black text-black hover:bg-black hover:text-white">
+                    Explore <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            
+            {/* Service 4 */}
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="h-48 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
+                <Settings className="h-24 w-24 text-gray-400" />
+                <Smartphone className="h-16 w-16 ml-4 text-green-400" />
+              </div>
+              <h3 className="text-2xl font-bold mb-3 text-center">Dashboard Maintenance</h3>
+              <p className="text-gray-600 text-center mb-4">
+                Keep your data visualizations up-to-date and optimized with our maintenance services. We ensure your dashboards stay relevant and functional.
+              </p>
+              <div className="flex justify-center">
+                <Link to="/dashboard">
+                  <Button variant="outline" className="rounded-full border-black text-black hover:bg-black hover:text-white">
+                    Get Support <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
